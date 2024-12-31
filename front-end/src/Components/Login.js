@@ -18,7 +18,7 @@ function Login() {
     setLoading(true); // Start loading before the API request
 
     try {
-      let result = await fetch("http://localhost:4500/login", {
+      let result = await fetch("https://story-api-pgo4.onrender.com/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
