@@ -34,7 +34,7 @@ function Signup() {
 
     setLoading(true); // Start loading
 
-    let result = await fetch("http://localhost:4500/register", {
+    let result = await fetch("https://story-api-pgo4.onrender.com/register", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
       headers: {
