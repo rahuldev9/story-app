@@ -45,7 +45,7 @@ function Profile() {
     formData.append('profileImage', selectedFile);
 
     try {
-      const response = await fetch(`http://localhost:4500/profile/${auth._id}`, {
+      const response = await fetch(`https://story-api-pgo4.onrender.com/profile/${auth._id}`, {
         method: 'PUT',
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`,
