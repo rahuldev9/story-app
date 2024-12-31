@@ -17,7 +17,7 @@ function UpdateProduct() {
   const getProductDetails = async () => {
     setLoading(true); // Start loading
     try {
-      let result = await fetch(`http://localhost:4500/product/${params.id}`, {
+      let result = await fetch(`https://story-api-pgo4.onrender.com/product/${params.id}`, {
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -44,7 +44,7 @@ function UpdateProduct() {
     formData.append("message", message);
     setLoading(true); // Start loading
     try {
-      let result = await fetch(`http://localhost:4500/product/${params.id}`, {
+      let result = await fetch(`https://story-api-pgo4.onrender.com/product/${params.id}`, {
         method: "PUT",
         body: formData,
         headers: {
