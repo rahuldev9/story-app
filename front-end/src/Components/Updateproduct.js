@@ -17,7 +17,7 @@ function UpdateProduct() {
   const getProductDetails = async () => {
     setLoading(true); // Start loading
     try {
-      let result = await fetch(`https://story-api-pgo4.onrender.com/${params.id}`, {
+      let result = await fetch(`https://story-api-pgo4.onrender.com/product/${params.id}`, {
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
