@@ -25,7 +25,7 @@ function ProductList() {
   };
 
   const deleteproduct = async (id) => {
-    let result = await fetch(`http://localhost:4500/product/${id}`, {
+    let result = await fetch(`https://story-api-pgo4.onrender.com/product/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
