@@ -8,7 +8,7 @@ function Profile() {
   const [message, setMessage] = useState("");
   const [preview, setPreview] = useState(
     auth && auth.profileImage
-      ? `http://localhost:4500/${auth.profileImage}`
+      ? `https://story-api-pgo4.onrender.com/${auth.profileImage}`
       : null
   );
   const navigate = useNavigate();
