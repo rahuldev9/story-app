@@ -32,7 +32,7 @@ function Home() {
     try {
       const userId = JSON.parse(localStorage.getItem("user"))._id; // Get logged-in user ID
       const result = await fetch(
-        `http://localhost:4500/like-product/${productId}`,
+        `https://story-api-pgo4.onrender.com/like-product/${productId}`,
         {
           method: "PUT",
           headers: {
