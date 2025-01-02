@@ -34,7 +34,7 @@ function Signup() {
 
     setLoading(true); // Start loading
 
-    let result = await fetch("https://story-api-pgo4.onrender.com/register", {
+    let result = await fetch("http://localhost:4500/register", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
       headers: {
@@ -76,100 +76,9 @@ function Signup() {
           justifyContent: "flex-start",
         }}
       >
-        {/* <form
-          style={{ height: "300px", display: "flex", flexDirection: "column" }}
-        >
-          <input
-            value={name}
-            type="text"
-            placeholder="Enter name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          {error && !name && (
-            <span
-              style={{
-                color: "red",
-                position: "relative",
-                right: "45px",
-                bottom: "10px",
-              }}
-            >
-              Enter valid name
-            </span>
-          )}
-          <input
-            value={email}
-            type="email"
-            placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {error && !email && (
-            <span
-              style={{
-                color: "red",
-                position: "relative",
-                right: "45px",
-                bottom: "10px",
-              }}
-            >
-              Enter valid email
-            </span>
-          )}
-          {emailError && (
-            <span
-              style={{
-                color: "red",
-                position: "relative",
-                right: "45px",
-                bottom: "10px",
-              }}
-            >
-              {emailError}
-            </span>
-          )}
-          {emailExistsError && (
-            <span
-              style={{
-                color: "red",
-                position: "relative",
-                right: "45px",
-                bottom: "10px",
-              }}
-            >
-              {emailExistsError}
-            </span>
-          )}
-          <input
-            value={password}
-            type="password"
-            placeholder="Enter password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {error && !password && (
-            <span
-              style={{
-                color: "red",
-                position: "relative",
-                right: "45px",
-                bottom: "10px",
-              }}
-            >
-              Enter valid password
-            </span>
-          )}
-          <button onClick={collectData} type="button">
-            Signup
-          </button>
-          {loading && <LoadingBar />} {/* Show loading bar while registering */}
-          {/* <p>
-            Already have an account?{" "}
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              Sign in
-            </Link>
-          </p>
-        </form> */}
-
+        {loading && <LoadingBar />}
         <form class="form">
+          
           <p id="heading">Register</p>
           <div class="field">
             <svg
@@ -289,9 +198,9 @@ function Signup() {
               {" "}
               <Link to="/login"style={{ textDecoration: "none", color: "white" }}>Signin</Link>
             </button>
-            {loading && <LoadingBar />}
           </div>
         </form>
+        
       </div>
     </div>
   );

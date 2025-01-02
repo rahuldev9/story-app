@@ -35,7 +35,7 @@ function AddProduct() {
     setLoading(true); // Start loading
 
     try {
-      const result = await fetch('https://story-api-pgo4.onrender.com/add-product', {
+      const result = await fetch('http://localhost:4500/add-product', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -77,37 +77,32 @@ function AddProduct() {
         </div>
       ) : (
         <>
-          <h2>Add Product</h2>
-          <textarea
-            type="text"
-            placeholder="Enter product name"
-            value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-              setError(false); // Reset error when user starts typing
-            }}
-            style={{
-              width: '80%',
-              padding: '10px',
-              margin: '10px 0',
-              borderRadius: '4px',
-              border: error ? '1px solid red' : '1px solid #ccc',
-            }}
-          />
-          {error && <span style={{ color: 'red', marginBottom: '10px' }}>Enter a valid product name</span>}
-          <button
-            onClick={addProduct}
-            style={{
-              padding: '10px 20px',
-              backgroundColor: '#4CAF50',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-            }}
-          >
-            Add Product
-          </button>
+          <h2>Add Post</h2>
+          <div className="form-container" style={{ width: '90%' }}>
+            <form className="form" onSubmit={addProduct}>
+              <div className="form-group">
+                <label htmlFor="textarea"></label>
+                <textarea
+                  name="textarea"
+                  id="textarea"
+                  cols="50"
+                  value={message}
+                  type="text"
+                  placeholder="Type Something...."
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                    setError(false); // Reset error when user starts typing
+                  }}
+                  rows="8"
+                  style={{ width: "80%", display: "flex", alignSelf: "center" }}
+                ></textarea>
+              </div>
+              <button className="form-submit-btn" type="submit">
+                Submit
+              </button>
+              {error && <span style={{ color: 'red', marginBottom: '10px' }}>Message is empty</span>}
+            </form>
+          </div>
         </>
       )}
     </div>

@@ -16,6 +16,7 @@ import ResetPassword from './Components/ResetPassword';
 import First from "./Components/First";
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoadingBar from "./LoadingBar";
 function App() {
   const [color, setColor] = useState('white');
   const [text,settext]= useState('black')
@@ -26,8 +27,9 @@ function App() {
     settext((prevtext)=>(prevtext==='black'?'white':'black'))
   };
   return (
+    <>
     <div className="App" class="color-box" style={{backgroundColor:color,color:text, margin: "0 auto",
-      transition:"background-color 1s ease"}}>
+      transition:"background-color 1s ease",height:'100%'}}>
       <BrowserRouter>
       <div style={{display:'flex',flexDirection:'row',justifyContent:'flex-end',}}>
       <input type="checkbox" class="theme-checkbox" onClick={toggleColor}></input>
@@ -48,11 +50,9 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
-      
-      {/* <Footer/> */}
       </BrowserRouter>
-      
     </div>
+    </>
   );
 }
 

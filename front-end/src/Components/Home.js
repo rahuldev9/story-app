@@ -13,7 +13,7 @@ function Home() {
 
   const getProducts = async () => {
     try {
-      const result = await fetch("https://story-api-pgo4.onrender.com/home", {
+      const result = await fetch("http://localhost:4500/home", {
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -32,7 +32,7 @@ function Home() {
     try {
       const userId = JSON.parse(localStorage.getItem("user"))._id; // Get logged-in user ID
       const result = await fetch(
-        `https://story-api-pgo4.onrender.com/like-product/${productId}`,
+        `http://localhost:4500/like-product/${productId}`,
         {
           method: "PUT",
           headers: {
@@ -63,7 +63,7 @@ function Home() {
     let key = event.target.value;
     if (key) {
       try {
-        const result = await fetch(`https://story-api-pgo4.onrender.com/search/${key}`, {
+        const result = await fetch(`http://localhost:4500/search/${key}`, {
           headers: {
             authorization: `bearer ${JSON.parse(
               localStorage.getItem("token")
@@ -123,7 +123,9 @@ function Home() {
                 <button>refresh</button>
             </div>
             {products.length > 0 ? (
+              
               products.map((item) => (
+                
                 <div
                   className="card red"
                   style={{
@@ -131,11 +133,15 @@ function Home() {
                     padding: "10px",
                     height: "auto",
                     width: "80%",
+                    maxHeight:'250px',
+                    overflow:'auto',
+                    scrollbarWidth: "none", 
+                    msOverflowStyle: "none"
                   }}
                   onDoubleClick={() => toggleLike(item._id)}
                   key={item._id}
                 >
-                  <p className="card-title">{item.message}</p>
+                  <p >{item.message}</p>
                   <div className="card-content">
                     <button
                       className="like"

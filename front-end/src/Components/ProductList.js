@@ -14,7 +14,7 @@ function ProductList() {
 
   const getProducts = async () => {
     const userid = JSON.parse(localStorage.getItem("user"))._id;
-    let result = await fetch(`https://story-api-pgo4.onrender.com/products/${userid}`, {
+    let result = await fetch(`http://localhost:4500/products/${userid}`, {
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
@@ -25,7 +25,7 @@ function ProductList() {
   };
 
   const deleteproduct = async (id) => {
-    let result = await fetch(`https://story-api-pgo4.onrender.com/product/${id}`, {
+    let result = await fetch(`http://localhost:4500/product/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -85,6 +85,10 @@ function ProductList() {
                     textAlign: "center",
                     height: "auto",
                     width: "80%",
+                    // maxHeight:'250px',
+                    // overflow:'auto',
+                    // scrollbarWidth: "none", 
+                    // msOverflowStyle: "none"
                   }}
                   key={index}
                 >
@@ -129,8 +133,9 @@ function ProductList() {
                     </div>
                   )}
                   <div class="main" style={{width:"100%"}}>
-                    <div class="card" style={{width:"100%",height:'100%'}}>
-                      <div class="card_content">
+                    <div class="card" style={{width:"100%",height:'100%',maxHeight:'250px',overflow:'auto',scrollbarWidth: "none", 
+                    msOverflowStyle: "none"}}>
+                      <div class="card_content" >
                         <p>{item.message}</p>
                       </div>
                       <div class="card_back"></div>

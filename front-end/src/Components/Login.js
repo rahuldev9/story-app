@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import LoadingBar from "../LoadingBar"; // Import LoadingBar
 
 function Login() {
   const [password, setPassword] = useState("");
@@ -18,7 +19,7 @@ function Login() {
     setLoading(true); // Start loading before the API request
 
     try {
-      let result = await fetch("https://story-api-pgo4.onrender.com/login", {
+      let result = await fetch("http://localhost:4500/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
@@ -62,76 +63,8 @@ function Login() {
           flexWrap: "wrap",
           justifyContent: 'flex-start',
         }}>
-      {loading && <div style={loadingBarStyle}></div>}
+      {loading && <LoadingBar />}
 
-      {/* <h1>Login</h1>
-      <form
-        style={{ height: "300px", display: "flex", flexDirection: "column" }}
-      >
-        <input
-          value={email}
-          type="email"
-          placeholder="Enter email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        {error && !email && (
-          <span
-            style={{
-              color: "red",
-              position: "relative",
-              right: "45px",
-              bottom: "10px",
-            }}
-          >
-            Enter a valid email
-          </span>
-        )}
-        <input
-          value={password}
-          type="password"
-          placeholder="Enter password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && !password && (
-          <span
-            style={{
-              color: "red",
-              position: "relative",
-              right: "35px",
-              bottom: "10px",
-            }}
-          >
-            Enter a valid password
-          </span>
-        )}
-        <button type="button" onClick={handleLogin}>
-          Sign In
-        </button>
-        {loginFailed && (
-          <span
-            style={{
-              color: "red",
-              marginTop: "10px",
-              fontSize: "14px",
-            }}
-          >
-            Login failed. Please check your email and password.
-          </span>
-        )}
-        <p>
-          Forgot your password?{" "}
-          <Link to="/forgot-password" style={{ textDecoration: "none" }}>
-            Reset it
-          </Link>
-        </p>
-
-        <p>
-          Don't have an account?{" "}
-          <Link to="/signup" style={{ textDecoration: "none" }}>
-            Sign up
-          </Link>
-        </p>
-      </form> */}
       <form class="form">
     <p id="heading">Login</p>
     <div class="field">
@@ -208,24 +141,5 @@ function Login() {
   );
 }
 
-const loadingBarStyle = {
-  width: '100%',
-  height: '4px',
-  backgroundColor: '#3498db',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  animation: 'loading 2s infinite',
-};
-
-// CSS keyframes for the loading animation
-const styleSheet = document.styleSheets[0];
-styleSheet.insertRule(`
-  @keyframes loading {
-      0% { width: 0; }
-      50% { width: 50%; }
-      100% { width: 100%; }
-  }
-`, styleSheet.cssRules.length);
 
 export default Login;

@@ -17,7 +17,7 @@ function UpdateProduct() {
   const getProductDetails = async () => {
     setLoading(true); // Start loading
     try {
-      let result = await fetch(`https://story-api-pgo4.onrender.com/product/${params.id}`, {
+      let result = await fetch(`http://localhost:4500/product/${params.id}`, {
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -44,7 +44,7 @@ function UpdateProduct() {
     formData.append("message", message);
     setLoading(true); // Start loading
     try {
-      let result = await fetch(`https://story-api-pgo4.onrender.com/product/${params.id}`, {
+      let result = await fetch(`http://localhost:4500/product/${params.id}`, {
         method: "PUT",
         body: formData,
         headers: {
@@ -79,8 +79,8 @@ function UpdateProduct() {
       ) : (
         <>
           <h2>Update Product</h2>
-          <div className="form-container" style={{ width: '80%' }}>
-            <form className="form" onSubmit={updateProduct}>
+          <div className="form-container" style={{ width: '90%' }}>
+            <form className="form" onSubmit={updateProduct} >
               <div className="form-group">
                 <label htmlFor="textarea">You can Edit now</label>
                 <textarea
@@ -92,7 +92,8 @@ function UpdateProduct() {
                   placeholder="Type Something...."
                   onChange={(e) => setMessage(e.target.value)}
                   rows="8"
-                  style={{ width: "80%", display: "flex", alignSelf: "center" }}
+                  style={{ width: "80%", display: "flex", alignSelf: "center",scrollbarWidth: "none", 
+                  msOverflowStyle: "none" }}
                 ></textarea>
               </div>
               <button className="form-submit-btn" type="submit">
