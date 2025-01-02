@@ -48,7 +48,7 @@ function Profile() {
 
     try {
       const response = await fetch(
-        `http://localhost:4500/profile/${auth._id}`,
+        `https://story-api-pgo4.onrender.com/profile/${auth._id}`,
         {
           method: "PUT",
           headers: {
