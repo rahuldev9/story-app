@@ -13,7 +13,7 @@ function Home() {
 
   const getProducts = async () => {
     try {
-      const result = await fetch("http://localhost:4500/home", {
+      const result = await fetch("https://story-api-pgo4.onrender.com/home", {
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -63,7 +63,7 @@ function Home() {
     let key = event.target.value;
     if (key) {
       try {
-        const result = await fetch(`http://localhost:4500/search/${key}`, {
+        const result = await fetch(`https://story-api-pgo4.onrender.com/search/${key}`, {
           headers: {
             authorization: `bearer ${JSON.parse(
               localStorage.getItem("token")
